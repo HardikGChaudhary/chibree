@@ -1,11 +1,12 @@
-
 import './App.css';
+import Logo from './container/Logo';
+import Header from './shared/Header';
 
 function App() {
   return (
-    <div className="text-2xl text-red-600">
-      <h1>Chibaree</h1>
-    </div>
+   <>
+      <Header></Header>
+   </>
   );
 }
 
