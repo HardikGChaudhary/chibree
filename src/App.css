@@ -1,3 +1,10 @@
 body {
   font-family: "Comfortaa", cursive;
 }
+.active {
+  color: white;
+  background-color: #F59E0B;
+  padding: 8px;
+  font-weight: 700;
+  border-radius: 8px;
+}
