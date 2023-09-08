@@ -5,7 +5,7 @@ const Menu = () => {
   return (
     <>
       <div>
-        <div className="text-darkblack font-medium space-x-4">
+        <div className="text-darkblack space-x-4 font-semibold">
           <NavLink to="/Learn">Learn</NavLink>
           <NavLink to="/Practice">Practice</NavLink>
           <NavLink to="/GKQuiz">GK Quiz</NavLink>

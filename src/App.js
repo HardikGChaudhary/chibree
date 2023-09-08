@@ -5,6 +5,7 @@ import Learn from "./container/Learn";
 import Practice from "./container/Practice";
 import Error from "./container/Error";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Animals from "./container/things/Animals";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/Learn" element={<Learn />} />
           <Route path="/Practice" element={<Practice />} />
           <Route path="/GKQuiz" element={<GKQuiz />} />
+          <Route path="/Animals" element={<Animals />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
