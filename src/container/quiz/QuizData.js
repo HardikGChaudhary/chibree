@@ -16,8 +16,8 @@ const QA = [
     {
         question: "How many days are there in a year?",
         answers: [
-            {Option: '367', isCorrect: true},
-            {Option: '365', isCorrect: false},
+            {Option: '367', isCorrect: false},
+            {Option: '365', isCorrect: true},
         ]
     },
     {
@@ -27,5 +27,6 @@ const QA = [
             {Option: 'Ostrich', isCorrect: true},
         ]
     },
+    
 ]
 export default QA;
