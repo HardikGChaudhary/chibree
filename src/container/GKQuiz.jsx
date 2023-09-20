@@ -26,13 +26,21 @@ const GKQuiz = () => {
   // Show the result
   const [showResult, setShowResult] = useState(false);
 
+  // PlayAgain
+  const PlayAgain = () => {
+    setQue(0)
+    setScore(0)
+    setCorrectAns(0)
+    setShowResult(false)
+  }
+
   return (
     <>
       <Header></Header>
       <h1>Hi I am GK Quiz</h1>
       <div>
         {showResult ? (
-          <QuizResult score={score} correctAns={correctAns} QA={QA} />
+          <QuizResult score={score} correctAns={correctAns} QA={QA} PlayAgain={PlayAgain} />
         ) : (
           <div>
             {/* Quetions section */}
@@ -62,7 +70,7 @@ const GKQuiz = () => {
               })}
             </div>
             <div>
-              <button>Quit</button>
+              <button onClick={PlayAgain}>Quit</button>
               <button onClick={handleNextQA}>Next</button>
             </div>
           </div>
