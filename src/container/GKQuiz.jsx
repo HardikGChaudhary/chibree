@@ -5,6 +5,7 @@ import QuizResult from "./quiz/QuizResult";
 
 const GKQuiz = () => {
   const [que, setQue] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null);
   const handleNextQA = () => {
     const NextQA = que + 1;
     if (NextQA < QA.length) {
@@ -17,61 +18,86 @@ const GKQuiz = () => {
   const [score, setScore] = useState(0);
   // If ans is true thn increase score
   const [correctAns, setCorrectAns] = useState(0);
-  const handleOptions = (isCorrect) => {
+  const handleOptions = (isCorrect, optionIndex) => {
+    setSelectedOption(optionIndex);
     if (isCorrect) {
       setScore(score + 1);
       setCorrectAns(correctAns + 1);
     }
+    // handleNextQA();
+    setTimeout(handleNextQA, 1000);
   };
   // Show the result
   const [showResult, setShowResult] = useState(false);
 
   // PlayAgain
   const PlayAgain = () => {
-    setQue(0)
-    setScore(0)
-    setCorrectAns(0)
-    setShowResult(false)
-  }
+    setQue(0);
+    setScore(0);
+    setCorrectAns(0);
+    setShowResult(false);
+  };
 
   return (
     <>
       <Header></Header>
-      <h1>Hi I am GK Quiz</h1>
-      <div>
+      <div className="bg-doveOrange p-10">
         {showResult ? (
-          <QuizResult score={score} correctAns={correctAns} QA={QA} PlayAgain={PlayAgain} />
+          <QuizResult
+            score={score}
+            correctAns={correctAns}
+            QA={QA}
+            PlayAgain={PlayAgain}
+          />
         ) : (
-          <div>
-            {/* Quetions section */}
-            <div className="que-sec">
-              <div>Score: {score}</div>
-              <div className="que-count">
-                <span>
-                  Question {que + 1} of {QA.length}
-                </span>
+          <div className="">
+            <div className="bg-white p-8 text-primaryBlue shadow-2xl rounded-xl">
+              {/* Quetions section */}
+              <div className="que-sec flex justify-between items-center font-bold">
+                <div>Score: {score}</div>
+                <div className="que-count">
+                  <span>
+                    Question {que + 1} of {QA.length}
+                  </span>
+                </div>
               </div>
-              <div className="quetion">{QA[que].question}</div>
-            </div>
+              {/* Quetion */}
+              <div className="quetion py-10 text-center text-3xl font-bold">
+                {QA[que].question}
+              </div>
 
-            {/* Answer sction */}
-            <div className="ans-sec">
-              {QA[que].answers.map((ans, i) => {
-                return (
-                  <>
-                    <button
-                      onClick={() => handleOptions(ans.isCorrect)}
-                      key={i}
-                    >
-                      {ans.Option}
-                    </button>
-                  </>
-                );
-              })}
-            </div>
-            <div>
-              <button onClick={PlayAgain}>Quit</button>
-              <button onClick={handleNextQA}>Next</button>
+              {/* Answer section */}
+              <div className="ans-sec flex justify-center items-center space-x-4">
+                {QA[que].answers.map((ans, i) => {
+                  const optionClass = i === selectedOption ? (ans.isCorrect ? 'trueButton' : 'falseButton') : '';
+                  return (
+                    <>
+                      <button
+                        className={`button ${optionClass}`}
+                        // className="w-60 shadow-lg duration-150 hover:bg-doveOrange border border-darkblack hover:border-doveOrange hover:text-white h-14 rounded-xl text-xl font-bold"
+                        onClick={() => handleOptions(ans.isCorrect, i)}
+                        key={i}
+                      >
+                        {ans.Option}
+                      </button>
+                    </>
+                  );
+                })}
+              </div>
+              <div className="space-x-4 flex justify-end">
+                <button
+                  className="w-24 shadow-lg duration-150 hover:bg-doveOrange border border-darkblack hover:border-doveOrange hover:text-white h-10 rounded-xl text-lg font-semibold"
+                  onClick={PlayAgain}
+                >
+                  Quit
+                </button>
+                {/* <button
+                  className="w-24 shadow-lg duration-150 hover:bg-doveOrange border border-darkblack hover:border-doveOrange hover:text-white h-10 rounded-xl text-lg font-semibold"
+                  onClick={handleNextQA}
+                >
+                  Next
+                </button> */}
+              </div>
             </div>
           </div>
         )}
