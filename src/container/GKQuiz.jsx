@@ -69,13 +69,13 @@ const GKQuiz = () => {
               {/* Answer section */}
               <div className="ans-sec flex justify-center items-center space-x-4">
                 {QA[que].answers.map((ans, i) => {
-                  const optionClass = i === selectedOption ? (ans.isCorrect ? 'trueButton' : 'falseButton') : '';
+                  const optionClass = ans === selectedOption ? (ans.isCorrect ? 'trueButton' : 'falseButton') : '';
                   return (
                     <>
                       <button
                         className={`button ${optionClass}`}
                         // className="w-60 shadow-lg duration-150 hover:bg-doveOrange border border-darkblack hover:border-doveOrange hover:text-white h-14 rounded-xl text-xl font-bold"
-                        onClick={() => handleOptions(ans.isCorrect, i)}
+                        onClick={() => handleOptions(ans.isCorrect, ans)}
                         key={i}
                       >
                         {ans.Option}
