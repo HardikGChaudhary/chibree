@@ -11,7 +11,6 @@ const ProgressBar = (props) => {
           {props.width}%
         </div>
       </div>
-      {/* <button onClick={() => props.increaseWidth()}>Increase Width</button> */}
     </>
   );
 };

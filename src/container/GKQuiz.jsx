@@ -42,8 +42,8 @@ const GKQuiz = () => {
     setWidth(0);
   };
 
+  // ProgressBar
   const [width, setWidth] = useState(0);
-
   const increaseWidth = () => {
     setWidth(width + 25);
   };
@@ -93,7 +93,6 @@ const GKQuiz = () => {
                     <>
                       <button
                         className={`button ${optionClass}`}
-                        // className="w-60 shadow-lg duration-150 hover:bg-doveOrange border border-darkblack hover:border-doveOrange hover:text-white h-14 rounded-xl text-xl font-bold"
                         onClick={() => handleOptions(ans.isCorrect, ans)}
                         key={i}
                       >
